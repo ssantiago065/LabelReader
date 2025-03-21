@@ -8,10 +8,6 @@ import easyocr
 # Cargamos la imagen en escala de grises.
 imagen = cv2.imread('milk_tag.jpg', cv2.IMREAD_GRAYSCALE)
 
-# Aplicamos un filtro sobel en X y Y, usando un kernel de tamaño de 3x3.  
-sobel_x = cv2.Sobel(imagen, cv2.CV_64F, 1, 0, ksize=3)
-sobel_y = cv2.Sobel(imagen, cv2.CV_64F, 0, 1, ksize=3)
-
 # Invertimos la imagen para un mejor contraste.
 imagen_invertida = cv2.bitwise_not(imagen)
 
