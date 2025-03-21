@@ -8,10 +8,6 @@ import easyocr
 # Cargamos la imagen en escala de grises.
 imagen = cv2.imread('milk.jpg', cv2.IMREAD_GRAYSCALE)
 
-# Aplicamos un filtro sobel en X y Y, usando un kernel de tamaño de 3x3.  
-sobel_x = cv2.Sobel(imagen, cv2.CV_64F, 1, 0, ksize=3)
-sobel_y = cv2.Sobel(imagen, cv2.CV_64F, 0, 1, ksize=3)
-
 # Invertimos la imagen para un mejor contraste.
 imagen_invertida = cv2.bitwise_not(imagen)
 
@@ -26,6 +22,4 @@ apertura = cv2.morphologyEx(umbralizada, cv2.MORPH_OPEN, kernel)
 cierre = cv2.morphologyEx(apertura, cv2.MORPH_CLOSE, kernel)
 
 # Convertir los bordes a valores absolutos para los valores negativos del Sobel.
-sobel_x = cv2.convertScaleAbs(sobel_x)
-sobel_y = cv2.convertScaleAbs(sobel_y)
 cierre = cv2.convertScaleAbs(cierre)
