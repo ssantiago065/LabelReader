@@ -25,11 +25,6 @@ apertura = cv2.morphologyEx(umbralizada, cv2.MORPH_OPEN, kernel)
 # Unimos las letras separadas.
 cierre = cv2.morphologyEx(apertura, cv2.MORPH_CLOSE, kernel)
 
-# Convertir los bordes a valores absolutos para los valores negativos del Sobel.
-sobel_x = cv2.convertScaleAbs(sobel_x)
-sobel_y = cv2.convertScaleAbs(sobel_y)
-cierre = cv2.convertScaleAbs(cierre)
-
 # Inicializar el lector de OCR y definir los idiomas del lector
 reader = easyocr.Reader(['es', 'en']) 
 resultados = reader.readtext(cierre)
